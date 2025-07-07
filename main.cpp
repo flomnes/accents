@@ -3,7 +3,7 @@
 #include <iostream>
 #include <string>
 
-#define FILENAME "josé.txt"
+static const std::string FILENAME = "josé.txt";
 
 namespace fs = std::filesystem;
 
