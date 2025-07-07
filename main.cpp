@@ -1,6 +1,7 @@
 #include <filesystem>
 #include <iomanip>
 #include <iostream>
+#include <string>
 
 #define FILENAME "josé.txt"
 
