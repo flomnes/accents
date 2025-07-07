@@ -1,4 +1,3 @@
-#include <cstring>
 #include <filesystem>
 #include <iomanip>
 #include <iostream>
@@ -7,9 +6,9 @@
 
 namespace fs = std::filesystem;
 
-fs::path myu8path(const char* s)
+fs::path myu8path(const std::string& s)
 {
-    std::u8string u8s(s, s + std::strlen(s));
+    std::u8string u8s(s.begin(), s.end());
     return fs::path(u8s);
 }
 
