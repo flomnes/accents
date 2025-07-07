@@ -25,7 +25,7 @@ int main()
         std::cout << "fs::u8path " << fs::exists(q) << std::endl;
     }
     {
-        fs::path q = fs::path(myu8path(FILENAME));
+        fs::path q = myu8path(FILENAME);
         std::cout << "myu8path " << fs::exists(q) << std::endl;
     }
 }
