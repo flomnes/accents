@@ -1,31 +1,24 @@
-#include <filesystem>
-#include <iomanip>
+#include <algorithm>
 #include <iostream>
-#include <string>
+#include <vector>
 
-static const std::string FILENAME = "josé.txt";
-
-namespace fs = std::filesystem;
-
-fs::path myu8path(const std::string& s)
+void repro(std::vector<std::int64_t>& output)
 {
-    std::u8string u8s(s.begin(), s.end());
-    return fs::path(u8s);
+    int32_t input[] = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
+    auto len = sizeof(input) / sizeof(int32_t);
+    output.resize(len);
+    std::transform(input,
+                   input + len,
+                   output.begin(),
+                   [](int32_t x) -> std::int64_t { return static_cast<std::int64_t>(x); });
+    for (auto x: output)
+    {
+        std::cout << x << std::endl;
+    }
 }
 
 int main()
 {
-    std::cout << std::boolalpha;
-    {
-        fs::path p(FILENAME);
-        std::cout << "fs::path " << fs::exists(p) << std::endl;
-    }
-    {
-        fs::path q = fs::u8path(FILENAME);
-        std::cout << "fs::u8path " << fs::exists(q) << std::endl;
-    }
-    {
-        fs::path q = myu8path(FILENAME);
-        std::cout << "myu8path " << fs::exists(q) << std::endl;
-    }
+    std::vector<std::int64_t> output;
+    repro(output);
 }
